@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+
+ <title><%- title %></title>
+
+  <link href="css/style.default.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/codemirror/codemirror.css" />
+  <link rel="stylesheet" href="css/codemirror/theme/ambiance.css">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+
+
+<section>
+  
+   <%- include('../partials/leftpanel')%>
+  
+  <div class="mainpanel">
+    
+   <%- include('../partials/menu')%>
+        
+    <div class="pageheader">
+      <h2><i class="fa fa-pencil"></i> Code Editor <span>Subtitle goes here...</span></h2>
+      <div class="breadcrumb-wrapper">
+        <span class="label">You are here:</span>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Bracket</a></li>
+          <li><a href="general-forms.html">Forms</a></li>
+          <li class="active">Code Editor</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="contentpanel">
+        
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>This template uses CodeMirror as code editor to be used in this template. To know more about CodeMirror, click the buttons below</p>
+                <p><a href="http://codemirror.net/" class="btn btn-primary mr5" target=_blank">Visit Their Site</a> <a class="btn btn-default" target="_blank" href="http://codemirror.net/doc/manual.html">User Manual</a></p>
+            </div>
+        </div>
+      
+        <div class="panel panel-default panel-alt">
+            <div class="panel-heading">
+                <h4 class="panel-title">XML/HTML Mode</h4>
+                <p>The XML mode supports two configuration parameters <code>htmlMode</code> and <code>alignCDATA</code>. To learn more visit <a target="_blank" href="http://codemirror.net/mode/xml /.html">here</a>. To view more languages visit <a href="http://codemirror.net/mode /.html" target="_blank">here</a></p>
+            </div><!-- panel-heading -->
+            <div class="panel-body nopadding">
+                <textarea id="code" name="code">
+&lt;html style="color: green"&gt;
+  &lt;!-- this is a comment --&gt;
+  &lt;head&gt;
+    &lt;title&gt;HTML Example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    The indentation tries to be &lt;em&gt;somewhat &amp;quot;do what
+    I mean&amp;quot;&lt;/em&gt;... but might not match your style.
+  &lt;/body&gt;
+&lt;/html&gt;
+</textarea>    
+            </div><!-- panel-body -->
+            <div class="panel-footer">
+                <div class="alert alert-info nomargin">
+                    <p>The editor has a height of 300px. If you want to change it, just open the file css/codemirror/codemirror.css in line 3. Remove height for autoresize.</p>
+                </div>
+            </div>
+        </div><!-- panel -->
+        
+        <div class="panel panel-default panel-alt">
+            <div class="panel-heading">
+                <h4 class="panel-title">Code Editor Theme</h4>
+                <p>The code editor comes with different themes such as below. You can view more theme demos from the CodeMirror site by going <a href="http://codemirror.net/demo/theme.html" target="_blank">here</a></p>
+            </div><!-- panel-heading -->
+            <div class="panel-body nopadding">
+                <textarea id="code2" name="code">
+function findSequence(goal) {
+  function find(start, history) {
+    if (start == goal)
+      return history;
+    else if (start > goal)
+      return null;
+    else
+      return find(start + 5, "(" + history + " + 5)") ||
+             find(start * 3, "(" + history + " * 3)");
+  }
+  return find(1, "1");
+}
+</textarea>    
+            </div><!-- panel-body -->
+        </div><!-- panel -->
+        
+        <div class="panel panel-default panel-alt">
+            <div class="panel-heading">
+                <h4 class="panel-title">AutoFormatting Of Code</h4>
+                <p>Select a piece of code and click one of the links below to apply automatic formatting to the selected text or comment/uncomment the selected text. Note that the formatting behavior depends on the current block's mode. </p>
+                <div class="mb15"></div>
+                <button class="btn btn-primary btn-sm mr5 autoformat">Autoformat Selected</button>
+                <button class="btn btn-primary btn-sm mr5 comment">Comment Selected</button>
+                <button class="btn btn-primary btn-sm uncomment">Uncommment Selected</button>
+            </div><!-- panel-heading -->
+            <div class="panel-body nopadding">
+                <textarea id="code3" name="code"><script> (s,e)=>{ for(var i=0; i < 1; i++) test("test();a=1");} </script>
+<script>
+function test(c){  for (var i = 0; i < 10; i++){	          process("a.b();c = null;", 300);}
+}
+</script>
+<table><tr><td>test 1</td></tr><tr><td>test 2</td></tr></table>
+<script> function test() { return 1;} </script>
+<style> .test { font-size: medium; font-family: monospace; }
+</style></textarea>    
+            </div><!-- panel-body -->
+        </div><!-- panel -->
+        
+        
+      
+    </div><!-- contentpanel -->
+    
+  </div><!-- mainpanel -->
+  
+  <div class="rightpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#rp-alluser" data-toggle="tab"><i class="fa fa-users"></i></a></li>
+        <li><a href="#rp-favorites" data-toggle="tab"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#rp-history" data-toggle="tab"><i class="fa fa-clock-o"></i></a></li>
+        <li><a href="#rp-settings" data-toggle="tab"><i class="fa fa-gear"></i></a></li>
+    </ul>
+        
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="rp-alluser">
+            <h5 class="sidebartitle">Online Users</h5>
+            <ul class="chatuserlist">
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/userprofile.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Los Angeles, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user1.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <span class="pull-right badge badge-danger">2</span>
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>San Francisco, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Bangkok, Thailand</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+            
+            <div class="mb30"></div>
+            
+            <h5 class="sidebartitle">Offline Users</h5>
+            <ul class="chatuserlist">
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Los Angeles, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>San Francisco, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Bangkok, Thailand</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane" id="rp-favorites">
+            <h5 class="sidebartitle">Favorites</h5>
+            <ul class="chatuserlist">
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Los Angeles, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user1.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>San Francisco, CA</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Bangkok, Thailand</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Renov Leongal</strong>
+                            <small>Cebu City, Philippines</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user5.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Weno Carasbong</strong>
+                            <small>Tokyo, Japan</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane" id="rp-history">
+            <h5 class="sidebartitle">History</h5>
+            <ul class="chatuserlist">
+                <li class="online">
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user4.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Eileen Sideways</strong>
+                            <small>Hi hello, ctc?... would you mind if I go to your...</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user2.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Zaham Sindilmaca</strong>
+                            <small>This is to inform you that your product that we...</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+                <li>
+                    <div class="media">
+                        <a href="#" class="pull-left media-thumb">
+                            <img alt="" src="images/photos/user3.png" class="media-object">
+                        </a>
+                        <div class="media-body">
+                            <strong>Nusja Nawancali</strong>
+                            <small>Are you willing to have a long term relat...</small>
+                        </div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane pane-settings" id="rp-settings">
+            
+            <h5 class="sidebartitle mb20">Settings</h5>
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Show Offline Users</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle toggle-success"></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Enable History</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle toggle-success"></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Show Full Name</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle-chat1 toggle-success"></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-8 control-label">Show Location</label>
+                <div class="col-xs-4 control-label">
+                    <div class="toggle toggle-success"></div>
+                </div>
+            </div>
+            
+        </div><!-- tab-pane -->
+        
+    </div><!-- tab-content -->
+  </div><!-- rightpanel -->
+  
+</section>
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.sparkline.min.js"></script>
+<script src="js/toggles.min.js"></script>
+<script src="js/retina.min.js"></script>
+<script src="js/jquery.cookies.js"></script>
+
+
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/formatting.js"></script>
+<script src="js/codemirror/mode/xml.js"></script>
+<script src="js/codemirror/mode/javascript.js"></script>
+
+<script src="js/custom.js"></script>
+
+<script>
+    
+    "use strict";
+    
+    CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: {name: "xml", alignCDATA: true},
+        lineNumbers: true
+    });
+    
+    CodeMirror.fromTextArea(document.getElementById("code2"), {
+        mode: {name: "javascript"},
+        lineNumbers: true,
+        theme: 'ambiance'
+    });
+    
+    var editor = CodeMirror.fromTextArea(document.getElementById("code3"), {
+        mode: {name: "javascript"},
+        lineNumbers: true,
+    });
+    CodeMirror.commands["selectAll"](editor);
+    
+    function getSelectedRange() {
+        return { from: editor.getCursor(true), to: editor.getCursor(false) };
+    }
+      
+    function autoFormatSelection() {
+        var range = getSelectedRange();
+        editor.autoFormatRange(range.from, range.to);
+    }
+      
+    function commentSelection(isComment) {
+        var range = getSelectedRange();
+        editor.commentRange(isComment, range.from, range.to);
+    }
+    
+    jQuery(document).ready(function(){
+        
+        jQuery('.autoformat').click(function(){
+            autoFormatSelection();
+        });
+        
+        jQuery('.comment').click(function(){
+            commentSelection(true);
+        });
+        
+        jQuery('.uncomment').click(function(){
+            commentSelection(false);
+        });
+    
+    });
+  
+</script>
+
+</body>
+</html>
