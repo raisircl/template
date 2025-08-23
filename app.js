@@ -28,8 +28,6 @@ app.use((req,res)=>{
 // Use env PORT 
 const PORT = process.env.PORT;
 
-
-
 // server
 app.listen(PORT,()=>{
     console.log(`http://localhost:${PORT}`)
