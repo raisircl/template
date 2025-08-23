@@ -5,13 +5,13 @@ const app= express();
 const dotenv = require('dotenv');
 dotenv.config();
 
-// Pouter file
+// router file
 const siteRouter= require('./router/site.routes');
 
 // Public folder 
 app.use(express.static(path.join(__dirname,'public')));
 
-// EJS template view engine
+// EJS template,view engine
 app.set('view engine','ejs');
 
 // view folder dirname
