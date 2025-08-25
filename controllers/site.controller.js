@@ -1,3 +1,6 @@
+const { render } = require("ejs");
+const { response } = require("express");
+
 // pages folder files
 function renderFile(res,pageName,title){
     return res.render(`pages/${pageName}`,{title:title})
@@ -52,12 +55,23 @@ exports.wysiwyg=(req,res)=>renderFile(res,'wysiwyg','wysiwyg');
 exports.x_editable=(req,res)=>renderFile(res,'x-editable','x-editable');
 exports.signup_from= async(req,res,next)=>{
 try{
-    const body_data = req.body;
-    console.log(body_data);
-   await res.send('send massage')
+    const {Firstname,Lastname,Username,Password,retypepassword,Day,Yea,Email}= req.body;
+    console.log(Firstname,Username);
+   await res.render('pages/index',{title:'Home'});
 }catch(error){
-next(error);
+ next(error)
 }
+};
+
+exports.login=async(req,res,next)=>{
+    try{
+        const{Username,Password}=req.body;
+        await res.render('pages/index',{title:'Home'});
+
+    }
+    catch(error){
+        next(error)
+    }
 }
 //ajax folder file
 

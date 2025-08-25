@@ -32,9 +32,9 @@ app.use((req,res)=>{
 });
 
 // erro hendler
-app.use((req,res,next,error)=>{
-    res.status(500).render('page/notfound',{title : "not found"})
-})
+// app.use((req,res,next)=>{
+//     res.status(500).render('pages/notfound',{title : "not found"})
+// })
 
 // Use env PORT 
 const PORT = process.env.PORT;
