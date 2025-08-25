@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <%- include('../partials/head') %>
-  
+  <title><%- title %></title>
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
@@ -574,20 +574,7 @@
   
 </section>
 
-
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/modernizr.min.js"></script>
-<script src="js/jquery.sparkline.min.js"></script>
-<script src="js/toggles.min.js"></script>
-<script src="js/retina.min.js"></script>
-<script src="js/jquery.cookies.js"></script>
-
-
-<script src="js/masonry.pkgd.min.js"></script>
-
-<script src="js/custom.js"></script>
+<%- include('../partials/js-common') %>
 <script>
   jQuery(window).load(function(){
     

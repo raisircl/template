@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <%- include('../partials/head') %>
-  <title><%- title %></title>
+  <title>Not found</title>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -16,22 +16,14 @@
 
 <section>
   
-    <div class="lockedpanel">
-        <div class="locked">
-            <i class="fa fa-lock"></i>
-        </div>
-        <div class="loginuser">
-            <img src="images/photos/loggeduser.png" alt="" />
-        </div>
-        <div class="logged">
-            <h4>John Doe</h4>
-            <small class="text-muted">username@domain.com</small>
-        </div>
-        <form method="post" action=" / ">
-            <input type="password" class="form-control" placeholder="Enter your password" />
-            <button class="btn btn-success btn-block">Unlock</button>
-        </form>
-    </div><!-- lockedpanel -->
+  <div class="notfoundpanel">
+    <h1>Thanks!</h1>
+    <h3></h3>
+    <h4>The page you are looking for might have been removed, had its name changed, or unavailable. <br />Maybe you could try a search:</h4>
+    <form action="/search-results ">
+        <input type="text" class="form-control" placeholder="Search for page" /> <button class="btn btn-success">Search</button>
+    </form>
+  </div><!-- notfoundpanel -->
   
 </section>
 
@@ -39,11 +31,10 @@
 <%- include('../partials/js-common') %>
 <script>
     jQuery(document).ready(function(){
-        
         "use strict";
         
         // Do not use the code below
-        // This is for demo purposes only
+        // For demo purposes only
         var c = jQuery.cookie('change-skin');
         if (c && c == 'katniss') {
             jQuery('.btn-success').addClass('btn-primary').removeClass('btn-success');
@@ -51,5 +42,6 @@
         
     });
 </script>
+
 </body>
 </html>

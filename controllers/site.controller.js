@@ -50,7 +50,14 @@ exports.view_issue=(req,res)=>renderFile(res,'view-issue','view-issue');
 exports.widgets=(req,res)=>renderFile(res,'widgets','widgets');
 exports.wysiwyg=(req,res)=>renderFile(res,'wysiwyg','wysiwyg');
 exports.x_editable=(req,res)=>renderFile(res,'x-editable','x-editable');
+exports.signup_from= async(req,res,next)=>{
+try{
+   
+    
+}catch{
 
+}
+}
 //ajax folder file
 
 function ajaxFolder(res,fileName){
