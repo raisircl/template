@@ -6,6 +6,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // form data to create body middleware
+app.use(express.urlencoded({ extended: true }));
+
+// json data 
+app.use(express.json())
 
 // router file
 const siteRouter= require('./router/site.routes');
@@ -26,6 +30,11 @@ app.use('/',siteRouter);
 app.use((req,res)=>{
     res.status(404).render('pages/notfound')
 });
+
+// erro hendler
+app.use((req,res,next,error)=>{
+    res.status(500).render('page/notfound',{title : "not found"})
+})
 
 // Use env PORT 
 const PORT = process.env.PORT;

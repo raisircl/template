@@ -48,6 +48,7 @@ router.get('/view-issue',controller.view_issue);
 router.get('/widgets',controller.widgets);
 router.get('/wysiwyg',controller.wysiwyg);
 router.get('/x-editable',controller.x_editable);
+router.post('/submit-det',controller.signup_from);
 
 
 //ajax
