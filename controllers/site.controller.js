@@ -1,8 +1,36 @@
 const { render } = require("ejs");
 const { response } = require("express");
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
+const uri = `mongodb+srv://codetestst:${process.env.PWD}@cluster-st-codetest.u9esacd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-ST-CodeTest`;
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 // pages folder files
-function renderFile(res,pageName,title){
+async function renderFile(res,pageName,title){
+    
+    if(pageName=='leads')
+    {
+        // Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
+        // Send a ping to confirm a successful connection
+        await client.db("portfolioDB").command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        const myDB = client.db("portfolioDB");
+            const myColl = myDB.collection("contactUsData");
+            const result = await myColl.find().toArray();
+            
+            //console.log(result);
+       return res.render(`pages/${pageName}`,{data:result})    
+    }
     return res.render(`pages/${pageName}`,{title:title})
 }
 
@@ -10,6 +38,7 @@ function renderFile(res,pageName,title){
 exports.home=(req,res)=>renderFile(res,'index','Bracket Responsive Bootstrap3 Admin');
 exports.alerts=(req,res)=>renderFile(res,'alerts','alerts');
 exports.blank=(req,res)=>renderFile(res,'blank','blank');
+exports.leads=(req,res)=>renderFile(res,'leads','leads');
 exports.blog_list=(req,res)=>renderFile(res,'blog-list','blog-list');
 exports.blog_single=(req,res)=>renderFile(res,'blog-single','blog-single');
 exports.bug_issues=(req,res)=>renderFile(res,'bug-issues','bug-issues');
