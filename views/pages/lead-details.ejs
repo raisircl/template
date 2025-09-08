@@ -41,49 +41,74 @@
                   <div class="row">
         
         <div class="col-md-12">
-          <h5 class="subtitle mb5">Portfolio Leads</h5>
-          <p class="mb20">List of Leads of from your portfolio.</p>
+          <h5 class="subtitle mb5">Lead Details</h5>
+          <p class="mb20">
+            Name: <%=data.name%>, Email: <%=data.email%>, Ph. <%=data.phone%>
+            <br/>
+            Subject: <%=data.subject%><br/>
+            Message: <%=data.message%>
+         </p>
           <div class="table-responsive">
           <table class="table mb30">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Subject</th>
-                <th>Message</th>
-                <th>Status</th>
+                <th>Folloup Date</th>
+                <th>Remark</th>
+               <th></th>
                 
-                <th>Addon</th>
-                
-                <th></th>
+               
               </tr>
             </thead>
             <tbody>
              
-              <% data.forEach(function(x,srno){%>
+               <% data.followup.forEach(function(x,srno){%>
               <tr>
                
                 <td><%=++srno%></td>
-                <td><%=x.name%></td>
-                <td><%=x.email%></td>
-                <td><%=x.phone%></td>
-                <td><%=x.subject%></td>
-                <td><%=x.message%></td>
-                <td><%=x.leadstatus%></td>
-                <td><%=x.addon%></td>
+                <td><%=x.fudate%></td>
+                <td><%=x.remark%></td>
+              
                 
                 <td class="table-action">
-                  <a href="/lead-details?id=<%=x._id%>"> <i class="fa fa-pencil"></i></a>
+                  <a href=""><i class="fa fa-pencil"></i></a>
                   <a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
                 </td>
                
               </tr>
-             <% }); %>
+              <% }); %>
             </tbody>
           </table>
           </div><!-- table-responsive -->
+          <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">&times;</a>
+            <a href="" class="minimize">&minus;</a>
+          </div>
+          <h4 class="panel-title">Inline Form</h4>
+          <p>Basic form with a class name of <code>.form-inline</code>.</p>
+        </div>
+        <div class="panel-body">
+          <form class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail2">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputPassword2">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Remember me
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+          </form>
+        </div><!-- panel-body -->
+      </div><!-- panel -->
         </div><!-- col-md-6 -->
         
        
