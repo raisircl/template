@@ -62,7 +62,7 @@
             </thead>
             <tbody>
              
-               <% data.followup.forEach(function(x,srno){%>
+              <% data.followup.forEach(function(x,srno){%>
               <tr>
                
                 <td><%=++srno%></td>
@@ -86,25 +86,21 @@
             <a href="" class="panel-close">&times;</a>
             <a href="" class="minimize">&minus;</a>
           </div>
-          <h4 class="panel-title">Inline Form</h4>
-          <p>Basic form with a class name of <code>.form-inline</code>.</p>
+          <h4 class="panel-title">Folloup Form</h4>
+          <p>Take followup from <%=data.name%> and add here.</p>
         </div>
         <div class="panel-body">
-          <form class="form-inline">
+          <form class="form-inline" method="post" action="/lead-details?id=<%=data._id%>">
             <div class="form-group">
-              <label class="sr-only" for="exampleInputEmail2">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+              <label class="sr-only" for="fudate">Select Date</label>
+              <input type="date" class="form-control" name="fudate" id="fudate"/>
             </div>
             <div class="form-group">
-              <label class="sr-only" for="exampleInputPassword2">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+              <label class="sr-only" for="remark">Remark</label>
+              <input type="text" class="form-control" name="remark" id="remark" placeholder="Remark">
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Remember me
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign In</button>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-default">Reset</button>
           </form>
         </div><!-- panel-body -->

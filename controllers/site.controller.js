@@ -33,26 +33,35 @@ async function renderFile(req,res,pageName,title){
     }
     else if(pageName=='lead-details')
     {
+
         const objectId = ObjectId.createFromHexString(req.query.id);
-
         console.log(`Your reqested id is ${objectId}`);
-       
-
         const query={_id:objectId};
-        
-        console.log(`Your query is ${query}`);
-        
+        //.log(`Your query is ${query}`);
          // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
         // Send a ping to confirm a successful connection
         await client.db("portfolioDB").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
         const myDB = client.db("portfolioDB");
-            const myColl = myDB.collection("contactUsData");
-            const result = await myColl.findOne(query);
-            
-            console.log(result);
-       return res.render(`pages/${pageName}`,{data:result,title:title})  
+        const myColl = myDB.collection("contactUsData");
+        if(req.method=="POST")
+        {
+            console.log('Post Data Received...');
+            console.log(req.body);
+            const newFollowup=req.body;
+            const updated_result = await myColl.updateOne(
+             query,
+            { $push: { followup: newFollowup } }
+            );
+
+            console.log("Matched:", updated_result.matchedCount, "Modified:", updated_result.modifiedCount);
+        }
+        const result = await myColl.findOne(query);
+        console.log(req.method);
+        
+        //console.log(result);
+        return res.render(`pages/${pageName}`,{data:result,title:title})  
     }
     return res.render(`pages/${pageName}`,{title:title})
 }
@@ -140,4 +149,37 @@ exports.photo_viewer=(req,res)=>ajaxFolder(res,'photo-viewer')
 exports.remote=(req,res)=>ajaxFolder(res,'remote')
 exports.tabs=(req,res)=>ajaxFolder(res,'tabs')
 
+/*
 
+import { MongoClient, ObjectId } from "mongodb";
+
+const uri = "mongodb://127.0.0.1:27017";
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    await client.connect();
+    const db = client.db("yourdbname");
+    const collection = db.collection("contactusdata");
+
+    const contactId = "64d1234567890abc"; // replace with your _id
+
+    // The new follow-up entry
+    const newFollowup = {
+      fudate: new Date(),
+      remark: "Spoke with client, follow-up next week"
+    };
+
+    const result = await collection.updateOne(
+      { _id: new ObjectId(contactId) },
+      { $push: { "contact.followup": newFollowup } }
+    );
+
+    console.log("Matched:", result.matchedCount, "Modified:", result.modifiedCount);
+  } finally {
+    await client.close();
+  }
+}
+
+run().catch(console.dir);
+*/
